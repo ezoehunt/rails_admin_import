@@ -102,10 +102,13 @@ RailsAdmin.config do |config|
   config.model 'User' do
     import do
       mapping_key :email
+      mapping_key_list [:email, :another_field]
     end
   end
 end
 ```
+
+***mapping_key_list*** To include multiple update lookup values, list them here.
 
 Note that a matched record must exist when attaching associated models, or the
  imported record will fail and be skipped.
@@ -301,7 +304,7 @@ gem "rails_admin_import", "~> 1.2.0", require: "rails_admin_import/eager_load"
 * Update model import hooks to take 1 hash argument instead of 2 arrays with values and headers.
 
 * Support for importing file attributes was removed since I couldn't understand how it works. It should be possible to reimplement it yourself using post import hooks. Open an issue to discuss how to put back support for importing files into the gem.
- 
+
 ## Community-contributed translations
 
 * [Spanish translation](https://gist.github.com/yovasx2/dc0e9512e6c6243f840c) by Giovanni Alberto
